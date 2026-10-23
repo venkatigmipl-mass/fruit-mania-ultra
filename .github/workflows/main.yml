@@ -3,6 +3,9 @@ name: Build Fruit Mania Ultra APK
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,10 +17,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
+
+      - name: Update npm
+        run: npm install -g npm@11.6.2
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --no-audit --no-fund
 
       - name: Build web game
         run: npm run build
@@ -26,25 +32,11 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 17
+          java-version: '17'
 
-      - name: Configure Capacitor
-        run: npm install @capacitor/core @capacitor/cli @capacitor/android
+      - name: Install Capacitor
+        run: npm install @capacitor/core @capacitor/cli @capacitor/android --no-audit --no-fund
 
-      - name: Create Android project
-        run: npx cap add android
-
-      - name: Sync Android project
-        run: npx cap sync android
-
-      - name: Build APK
+      - name: Create Capacitor config if missing
         run: |
-          cd android
-          chmod +x gradlew
-          ./gradlew assembleDebug
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: Fruit-Mania-Ultra-APK
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if [ ! -f capacitor.config.ts ] && [ ! -f capacitor.config.json ] && [ ! -f
