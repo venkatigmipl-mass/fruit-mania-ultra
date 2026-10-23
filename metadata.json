@@ -1,0 +1,6 @@
+{
+  "name": "FRUIT MANIA ULTRA",
+  "description": "Premium mobile-first fruit slot-style arcade game featuring 5x3 spinning reels, 9 fixed paylines, Wild Stars, Scatter Gem Bonus Round with free spins, dynamic multipliers, and virtual points. 100% free entertainment.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
