@@ -1,5 +1,5 @@
-const createRoot = __vite__cjsImport0_reactDom_client["createRoot"];const _jsxDEV = __vite__cjsImport3_react_jsxDevRuntime["jsxDEV"];import __vite__cjsImport0_reactDom_client from "/node_modules/.vite/deps/react-dom_client.js?v=7c623386";
 import App from "./App.tsx";
+import "./index.css";
 import "./index.css";
 var _jsxFileName = "/app/applet/src/main.tsx";
 import __vite__cjsImport3_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=7c623386";
